@@ -72,3 +72,15 @@ free_tempfile (temp_t *tmp)
     xfree((void*)tmp);
   }
 }
+
+const char *
+tmp_to_var (const char *path)
+{
+    int fp = open(path, 0);
+    struct stat st;
+    if (fstat(fp,&st) == -1) {
+      return NULL;
+    }
+    char *buff = mmap(NULL, (size_t) st.st_size, PROT_READ, MAP_PRIVATE, fp, 0);
+    return buff;
+}
