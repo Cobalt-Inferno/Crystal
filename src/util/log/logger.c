@@ -24,7 +24,7 @@ fetch_time()
 
 
 void 
-log_info (char *logpath, bool _stdout, const char *format, ...)
+log_info (char *logpath, bool _stdout, char *_file, int line, const char *format, ...)
 {
   char str[MAX_MSG];
   FILE *f = fopen(logpath, "a");
@@ -35,17 +35,17 @@ log_info (char *logpath, bool _stdout, const char *format, ...)
     vsnprintf(str, MAX_MSG, format, args);
     va_end(args);
     if (_stdout) {
-      printf("%s -- %s (LINE: %d) -- INFO: %s", time, __FILE__, __LINE__, str);
-      fprintf(f, "%s -- %s (LINE: %d) -- INFO: %s", time, __FILE__, __LINE__, str);
+      printf("%s -- %s (LINE: %d) -- INFO: %s", time, _file, line, str);
+      fprintf(f, "%s -- %s (LINE: %d) -- INFO: %s", time, _file, line, str);
     } else {
-      fprintf(f, "%s -- %s (LINE: %d) -- INFO: %s", time, __FILE__, __LINE__, str);
+      fprintf(f, "%s -- %s (LINE: %d) -- INFO: %s", time, _file, line, str);
     }
   }
   free(time);
   fclose(f);
 }
 void 
-log_debug (char *logpath, bool _stdout, const char *format, ...)
+log_debug (char *logpath, bool _stdout, char *_file, int line, const char *format, ...)
 {
   char str[MAX_MSG];
   FILE *f = fopen(logpath, "a");
@@ -56,17 +56,17 @@ log_debug (char *logpath, bool _stdout, const char *format, ...)
     vsnprintf(str, MAX_MSG, format, args);
     va_end(args);
     if (_stdout) {
-      printf("%s -- %s (LINE: %d) -- DEBUG: %s", time, __FILE__, __LINE__, str);
-      fprintf(f, "%s -- %s (LINE: %d) -- DEBUG: %s", time, __FILE__, __LINE__, str);
+      printf("%s -- %s (LINE: %d) -- DEBUG: %s", time, _file, line, str);
+      fprintf(f, "%s -- %s (LINE: %d) -- DEBUG: %s", time, _file, line, str);
     } else {
-      fprintf(f, "%s -- %s (LINE: %d) -- DEBUG: %s", time, __FILE__, __LINE__, str);
+      fprintf(f, "%s -- %s (LINE: %d) -- DEBUG: %s", time, _file, line, str);
     }
   }
   free(time);
   fclose(f);
 }
 void 
-log_err (char *logpath, bool _stdout, const char *format, ...)
+log_err (char *logpath, bool _stdout, char *_file, int line, const char *format, ...)
 {
   char str[MAX_MSG];
   FILE *f = fopen(logpath, "a");
@@ -77,10 +77,10 @@ log_err (char *logpath, bool _stdout, const char *format, ...)
     vsnprintf(str, MAX_MSG, format, args);
     va_end(args);
     if (_stdout) {
-      printf("%s -- %s (LINE: %d) -- ERROR: %s", time, __FILE__, __LINE__, str);
-      fprintf(f, "%s -- %s (LINE: %d) -- ERROR: %s", time, __FILE__, __LINE__, str);
+      printf("%s -- %s (LINE: %d) -- ERROR: %s", time, _file, line, str);
+      fprintf(f, "%s -- %s (LINE: %d) -- ERROR: %s", time, _file, line, str);
     } else {
-      fprintf(f, "%s -- %s (LINE: %d) -- ERROR: %s", time, __FILE__, __LINE__, str);
+      fprintf(f, "%s -- %s (LINE: %d) -- ERROR: %s", time, _file, line, str);
     }
   }
   free(time);
