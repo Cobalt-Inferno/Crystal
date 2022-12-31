@@ -1,6 +1,9 @@
 CFLAGS = -march=native -O3 -Wall -Wextra -std=c89 -Wimplicit-function-declaration -Wunused-parameter -Wshadow -Wdouble-promotion -Wundef -fno-common -fstack-usage -Wconversion -ffunction-sections -Wpadded -fshort-enums -ffast-math
 CXXFLAGS = -march=native -O3 -Wall -Wextra -std=c++17 -Wno-unused-parameter -Wshadow -Wdouble-promotion -Wundef -fno-common -fstack-usage -Wconversion -ffunction-sections -Wpadded -fshort-enums -ffast-math
 
+# File to install dependencies
+INSTALL_DEPS := install-deps.sh
+
 PREFIX = /usr/local
 INSTALLDIR = $(PREFIX)/bin
 TARGET = crystal
@@ -23,6 +26,7 @@ all: ${OBJS} ${CXXOBJS}
 
 .PHONY: configure
 configure:
+	sh $(INSTALL_DEPS)
 	@$(RM) $(OBJDIR)
 	@cp -rf $(SRCDIR) $(OBJDIR)
 	@find $(OBJDIR) -type f -delete
