@@ -14,7 +14,7 @@ _gen_tmp_str (char *str, size_t len)
 static char *
 _alloc_temp_str (size_t size)
 {
-  char *string = xmalloc(size + 1);
+  char *string = xmalloc(size - 1);
   if (string) {
     strcat(string, _gen_tmp_str(string, size));
   }
@@ -47,7 +47,7 @@ rm_tmp (char *path)
 const temp_t *
 init_tempfile (size_t len)
 {
-  temp_t *temp = xmalloc(sizeof(temp_t));
+  temp_t *temp = xmalloc(1024);
   const char *path = NULL;
   if ((path = _alloc_temp_str(len)) == NULL) {
     log_err("crystal.log", true, FF(), "Cannot allocate memory!");

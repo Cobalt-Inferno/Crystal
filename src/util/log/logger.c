@@ -1,6 +1,6 @@
 #include <util/log/logger.h>
 
-static const char *
+static char *
 omit_last_end(char *path)
 {
   char *tmp = malloc(MAX_MSG);
@@ -28,7 +28,7 @@ log_info (char *logpath, bool _stdout, char *_file, int line, const char *format
 {
   char str[MAX_MSG];
   FILE *f = fopen(logpath, "a");
-  const char *time = omit_last_end(fetch_time());
+  char *time = omit_last_end(fetch_time());
   if (f) {
     va_list args;
     va_start(args, format);
@@ -49,7 +49,7 @@ log_debug (char *logpath, bool _stdout, char *_file, int line, const char *forma
 {
   char str[MAX_MSG];
   FILE *f = fopen(logpath, "a");
-  const char *time = omit_last_end(fetch_time());
+  char *time = omit_last_end(fetch_time());
   if (f) {
     va_list args;
     va_start(args, format);
@@ -70,7 +70,7 @@ log_err (char *logpath, bool _stdout, char *_file, int line, const char *format,
 {
   char str[MAX_MSG];
   FILE *f = fopen(logpath, "a");
-  const char *time = omit_last_end(fetch_time());
+  char *time = omit_last_end(fetch_time());
   if (f) {
     va_list args;
     va_start(args, format);
