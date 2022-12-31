@@ -1,6 +1,3 @@
-#include "util/tempfile.h"
-#include <curl/curl.h>
-#include <curl/easy.h>
 #include <web/html_source.h>
 
 
@@ -13,7 +10,7 @@ write_data (void *ptr, size_t size, size_t nmemb, FILE *stream)
 static const temp_t *
 download_to_tmpfile (const char *url)
 {
-  temp_t *temp = init_tempfile(24);
+  const temp_t *temp = init_tempfile(24);
   CURL *curl = curl_easy_init();
   if (!curl) {
     return NULL;
@@ -34,6 +31,17 @@ download_to_tmpfile (const char *url)
 static const char *
 read_file_to_var (const char *path)
 {
-  FILE *fp = fopen(path, 'r');
+  return tmp_to_var(path);
+}
 
+static const char *
+retrive_html (const char *url)
+{
+  const temp_t *tmp = download_to_tmpfile(url);
+  const char *result = read_file_to_var(tmp->path);
+  free_tempfile((temp_t*)tmp);
+  if (result) {
+    return result;
+  }
+  return NULL;
 }
