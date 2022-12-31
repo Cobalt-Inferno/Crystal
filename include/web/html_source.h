@@ -10,6 +10,7 @@ extern "C" {
 #include <util/tempfile.h>
 
 
+const char *retrive_html (const char *url);
 
 #ifdef __cplusplus
 }
