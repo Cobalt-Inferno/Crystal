@@ -19,7 +19,7 @@ INC := $(wildcard $(INCDIR)/*.h)
 OBJS := $(SRC:$(SRCDIR)/%.c=$(OBJDIR)/%.o)
 CXXOBJS += $(CXXSRC:$(SRCDIR)/%.cpp=$(OBJDIR)/%.o)
 
-LINK_CMDS := -I/usr/local/lib
+LINK_CMDS := -I/usr/local/lib -lcurl
 
 
 $(TARGET): ${OBJS} ${CXXOBJS}
