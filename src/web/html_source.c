@@ -34,7 +34,7 @@ read_file_to_var (const char *path)
   return tmp_to_var(path);
 }
 
-static const char *
+const char *
 retrive_html (const char *url)
 {
   const temp_t *tmp = download_to_tmpfile(url);

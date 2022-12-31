@@ -1,4 +1,4 @@
-CFLAGS = -march=native -O3 -Wall -Wextra -std=c89 -Wimplicit-function-declaration -Wunused-parameter -Wshadow -Wdouble-promotion -Wundef -fno-common -fstack-usage -Wconversion -ffunction-sections -Wpadded -fshort-enums -ffast-math
+CFLAGS = -march=native -O3 -Wall -Wextra -std=c99 -Wimplicit-function-declaration -Wunused-parameter -Wshadow -Wdouble-promotion -Wundef -fno-common -fstack-usage -Wconversion -ffunction-sections -Wpadded -fshort-enums -ffast-math
 CXXFLAGS = -march=native -O3 -Wall -Wextra -std=c++17 -Wno-unused-parameter -Wshadow -Wdouble-promotion -Wundef -fno-common -fstack-usage -Wconversion -ffunction-sections -Wpadded -fshort-enums -ffast-math
 
 # File to install dependencies

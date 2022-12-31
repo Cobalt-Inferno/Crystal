@@ -1,4 +1,4 @@
-#include <util/tempfile.h>
+#include <util/tempfile/tempfile.h>
 
 static char *
 _gen_tmp_str (char *str, size_t len)
@@ -16,7 +16,7 @@ _alloc_temp_str (size_t size)
 {
   char *string = xmalloc(size + 1);
   if (string) {
-    _gen_tmp_str(string, size);
+    strcat(string, _gen_tmp_str(string, size));
   }
   return string;
 }
