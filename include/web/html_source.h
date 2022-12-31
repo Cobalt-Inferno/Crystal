@@ -6,6 +6,9 @@ extern "C" {
 
 #include <curl/curl.h>
 #include <stdio.h>
+#include <malloc/malloc_wrapper.h>
+#include <util/tempfile.h>
+
 
 
 #ifdef __cplusplus
