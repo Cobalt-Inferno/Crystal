@@ -19,8 +19,11 @@ INC := $(wildcard $(INCDIR)/*.h)
 OBJS := $(SRC:$(SRCDIR)/%.c=$(OBJDIR)/%.o)
 CXXOBJS += $(CXXSRC:$(SRCDIR)/%.cpp=$(OBJDIR)/%.o)
 
+LINK_CMDS := -I/usr/local/lib
+
+
 $(TARGET): ${OBJS} ${CXXOBJS}
-	$(CXX) $(CXXFLAGS) $(CXXOBJS) $(OBJS) -o $@ 
+	$(CXX) $(CXXFLAGS) $(CXXOBJS) $(OBJS) $(LINK_CMDS) -o $@ 
 
 all: ${OBJS} ${CXXOBJS} 
 
