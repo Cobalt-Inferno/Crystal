@@ -8,6 +8,7 @@ extern "C" {
 #include <stdbool.h>
 #include <stdio.h>
 #include <malloc/malloc_wrapper.h>
+#include <util/log/logger.h>
 #include <string.h>
 #include <stdlib.h>
 #include <sys/stat.h>
