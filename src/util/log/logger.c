@@ -35,10 +35,10 @@ log_info (char *logpath, bool _stdout, const char *format, ...)
     vsnprintf(str, MAX_MSG, format, args);
     va_end(args);
     if (_stdout) {
-      printf("%s -- %s -- INFO: %s", time, __FILE__, str);
-      fprintf(f, "%s -- %s -- INFO: %s", time, __FILE__, str);
+      printf("%s -- %s (LINE: %s) -- INFO: %s", time, __FILE__, __LINE__, str);
+      fprintf(f, "%s -- %s (LINE: %s) -- INFO: %s", time, __FILE__, __LINE__, str);
     } else {
-      fprintf(f, "%s -- %s -- INFO: %s", time, __FILE__, str);
+      fprintf(f, "%s -- %s (LINE: %s) -- INFO: %s", time, __FILE__, __LINE__, str);
     }
   }
   free(time);
@@ -56,10 +56,10 @@ log_debug (char *logpath, bool _stdout, const char *format, ...)
     vsnprintf(str, MAX_MSG, format, args);
     va_end(args);
     if (_stdout) {
-      printf("%s -- %s -- DEBUG: %s", time, __FILE__, str);
-      fprintf(f, "%s -- %s -- DEBUG: %s", time, __FILE__, str);
+      printf("%s -- %s (LINE: %s) -- DEBUG: %s", time, __FILE__, __LINE__, str);
+      fprintf(f, "%s -- %s (LINE: %s) -- DEBUG: %s", time, __FILE__, __LINE__, str);
     } else {
-      fprintf(f, "%s -- %s -- DEBUG: %s", time, __FILE__, str);
+      fprintf(f, "%s -- %s (LINE: %s) -- DEBUG: %s", time, __FILE__, __LINE__, str);
     }
   }
   free(time);
@@ -77,10 +77,10 @@ log_err (char *logpath, bool _stdout, const char *format, ...)
     vsnprintf(str, MAX_MSG, format, args);
     va_end(args);
     if (_stdout) {
-      printf("%s -- %s -- ERROR: %s", time, __FILE__, str);
-      fprintf(f, "%s -- %s -- ERROR: %s", time, __FILE__, str);
+      printf("%s -- %s (LINE: %s) -- ERROR: %s", time, __FILE__, __LINE__, str);
+      fprintf(f, "%s -- %s (LINE: %s) -- ERROR: %s", time, __FILE__, __LINE__, str);
     } else {
-      fprintf(f, "%s -- %s -- ERROR: %s", time, __FILE__, str);
+      fprintf(f, "%s -- %s (LINE: %s) -- ERROR: %s", time, __FILE__, __LINE__, str);
     }
   }
   free(time);
