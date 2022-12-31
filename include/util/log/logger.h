@@ -15,9 +15,9 @@ extern "C" {
 #include <time.h>
 #define MAX_MSG 5096
 
-static inline void log_err (char *logpath, bool _stdout, const char *format, ...);
-static inline void log_debug (char *logpath, bool _stdout, const char *format, ...);
-static inline void log_info (char *logpath, bool _stdout, const char *format, ...);
+void log_err (char *logpath, bool _stdout, const char *format, ...);
+void log_debug (char *logpath, bool _stdout, const char *format, ...);
+void log_info (char *logpath, bool _stdout, const char *format, ...);
 
 #ifdef __cplusplus
 }

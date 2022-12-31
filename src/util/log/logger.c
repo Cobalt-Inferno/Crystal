@@ -23,7 +23,7 @@ fetch_time()
 }
 
 
-static inline void 
+void 
 log_info (char *logpath, bool _stdout, const char *format, ...)
 {
   char str[MAX_MSG];
@@ -44,7 +44,7 @@ log_info (char *logpath, bool _stdout, const char *format, ...)
   free(time);
   fclose(f);
 }
-static inline void 
+void 
 log_debug (char *logpath, bool _stdout, const char *format, ...)
 {
   char str[MAX_MSG];
@@ -65,7 +65,7 @@ log_debug (char *logpath, bool _stdout, const char *format, ...)
   free(time);
   fclose(f);
 }
-static inline void 
+void 
 log_err (char *logpath, bool _stdout, const char *format, ...)
 {
   char str[MAX_MSG];
