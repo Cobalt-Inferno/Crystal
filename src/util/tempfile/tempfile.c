@@ -1,4 +1,3 @@
-#include "util/log/logger.h"
 #include <util/tempfile/tempfile.h>
 
 static char *
@@ -51,7 +50,7 @@ init_tempfile (size_t len)
   temp_t *temp = xmalloc(sizeof(temp_t));
   const char *path = NULL;
   if ((path = _alloc_temp_str(len)) == NULL) {
-    log_err("crystal.log", true, "Cannot allocate memory!");
+    log_err("crystal.log", true, FF(), "Cannot allocate memory!");
     return NULL;
   }
   if (strlen(path) <= PATH_MAX) {
@@ -81,7 +80,7 @@ tmp_to_var (const char *path)
     int fp = open(path, 0);
     struct stat st;
     if (fstat(fp,&st) == -1) {
-      log_debug("crystal.log", true, "Could not use fstat!");
+      log_debug("crystal.log", true, FF(), "Could not use fstat!");
       return NULL;
     }
     char *buff = mmap(NULL, (size_t) st.st_size, PROT_READ, MAP_PRIVATE, fp, 0);
