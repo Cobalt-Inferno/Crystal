@@ -8,6 +8,7 @@ xmalloc(size_t size)
   if (allocated) {
     return allocated;
   } else {
+    log_err("crystal.log", true, FF(), "Cannot allocate memory in xmalloc!");
     return NULL;
   }
 }

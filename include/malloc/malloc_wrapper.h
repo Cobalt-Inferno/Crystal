@@ -6,6 +6,7 @@ extern "C" {
 
 #include <stdio.h>
 #include <malloc.h>
+#include <util/log/logger.h>
 
 void *xmalloc(size_t size);
 void xfree(void *ptr);
