@@ -35,10 +35,10 @@ log_info (char *logpath, bool _stdout, char *_file, int line, const char *format
     vsnprintf(str, MAX_MSG, format, args);
     va_end(args);
     if (_stdout) {
-      printf("%s -- %s (LINE: %d) -- INFO: %s", time, _file, line, str);
-      fprintf(f, "%s -- %s (LINE: %d) -- INFO: %s", time, _file, line, str);
+      printf("%s -- %s (LINE: %d) -- INFO: %s\n", time, _file, line, str);
+      fprintf(f, "%s -- %s (LINE: %d) -- INFO: %s\n", time, _file, line, str);
     } else {
-      fprintf(f, "%s -- %s (LINE: %d) -- INFO: %s", time, _file, line, str);
+      fprintf(f, "%s -- %s (LINE: %d) -- INFO: %s\n", time, _file, line, str);
     }
   }
   free(time);
@@ -56,10 +56,10 @@ log_debug (char *logpath, bool _stdout, char *_file, int line, const char *forma
     vsnprintf(str, MAX_MSG, format, args);
     va_end(args);
     if (_stdout) {
-      printf("%s -- %s (LINE: %d) -- DEBUG: %s", time, _file, line, str);
-      fprintf(f, "%s -- %s (LINE: %d) -- DEBUG: %s", time, _file, line, str);
+      printf("%s -- %s (LINE: %d) -- DEBUG: %s\n", time, _file, line, str);
+      fprintf(f, "%s -- %s (LINE: %d) -- DEBUG: %s\n", time, _file, line, str);
     } else {
-      fprintf(f, "%s -- %s (LINE: %d) -- DEBUG: %s", time, _file, line, str);
+      fprintf(f, "%s -- %s (LINE: %d) -- DEBUG: %s\n", time, _file, line, str);
     }
   }
   free(time);
@@ -77,10 +77,10 @@ log_err (char *logpath, bool _stdout, char *_file, int line, const char *format,
     vsnprintf(str, MAX_MSG, format, args);
     va_end(args);
     if (_stdout) {
-      printf("%s -- %s (LINE: %d) -- ERROR: %s", time, _file, line, str);
-      fprintf(f, "%s -- %s (LINE: %d) -- ERROR: %s", time, _file, line, str);
+      printf("%s -- %s (LINE: %d) -- ERROR: %s\n", time, _file, line, str);
+      fprintf(f, "%s -- %s (LINE: %d) -- ERROR: %s\n", time, _file, line, str);
     } else {
-      fprintf(f, "%s -- %s (LINE: %d) -- ERROR: %s", time, _file, line, str);
+      fprintf(f, "%s -- %s (LINE: %d) -- ERROR: %s\n", time, _file, line, str);
     }
   }
   free(time);
