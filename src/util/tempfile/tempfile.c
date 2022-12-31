@@ -4,8 +4,10 @@ static char *
 _gen_tmp_str (char *str, size_t len)
 {
   const char charset[] = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
-  for (size_t i = 0; i < len; i++) {
-    str[i] = rand() % (int) (sizeof charset - 1);
+  str[0] = '/';str[1] = 't';str[2] = 'm';str[3] = 'p';str[4] = '/'; // Start in /tmp/
+
+  for (size_t i = 5; i < len; i++) {
+    str[i] = charset[rand() % (int) (sizeof charset - 1)];
   }
   str[len] = '\0';
   return str;
@@ -64,25 +66,19 @@ init_tempfile (size_t len)
 void
 free_tempfile (temp_t *tmp)
 {
-  if (!tmp) {
-    return;
-  } else {
-    if (!rm_tmp(tmp->path)) {
-      return;
-    }
-    xfree((void*)tmp);
+  if (rm_tmp(tmp->path)) {
+    xfree(tmp);
   }
 }
-
 const char *
 tmp_to_var (const char *path)
 {
-    int fp = open(path, 0);
-    struct stat st;
-    if (fstat(fp,&st) == -1) {
-      log_debug("crystal.log", true, FF(), "Could not use fstat!");
-      return NULL;
-    }
-    char *buff = mmap(NULL, (size_t) st.st_size, PROT_READ, MAP_PRIVATE, fp, 0);
-    return buff;
+  int fp = open(path, 0);
+  struct stat st;
+  if (fstat(fp,&st) == -1) {
+    log_debug("crystal.log", true, FF(), "Could not use fstat!");
+    return NULL;
+  }
+  char *buff = mmap(NULL, (size_t) st.st_size, PROT_READ, MAP_PRIVATE, fp, 0);
+  return buff;
 }
