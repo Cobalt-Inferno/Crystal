@@ -8,6 +8,8 @@ extern "C" {
 #include <stdio.h>
 #include <malloc/malloc_wrapper.h>
 #include <util/tempfile/tempfile.h>
+#include <util/log/logger.h>
+
 
 
 const char *retrive_html (const char *url);

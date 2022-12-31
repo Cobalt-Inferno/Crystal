@@ -13,6 +13,7 @@ download_to_tmpfile (const char *url)
   const temp_t *temp = init_tempfile(24);
   CURL *curl = curl_easy_init();
   if (!curl) {
+    log_err("crystal.log", true, FF(), "Could not initialize curl!");
     return NULL;
   }
   curl_easy_setopt(curl, CURLOPT_URL, url);
@@ -23,6 +24,7 @@ download_to_tmpfile (const char *url)
   CURLcode res = curl_easy_perform(curl);
   if (res != CURLE_OK) {
     curl_easy_cleanup(curl);
+    log_err("crystal.log", true, FF(), "Failed to download the file.");
     return NULL;
   }
   return temp;
@@ -43,5 +45,6 @@ retrive_html (const char *url)
   if (result) {
     return result;
   }
+  log_debug("crystal.log", true, FF(), "Failed to retrieve html.");
   return NULL;
 }
