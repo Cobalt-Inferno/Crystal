@@ -53,7 +53,6 @@ init_tempfile (size_t len)
   char *path = NULL;
   if ((path = _alloc_temp_str(len)) == NULL) {
     log_err("crystal.log", true, FF(), "Cannot allocate memory!");
-    return;
   }
   if (strlen(path) <= PATH_MAX) {
     if (touch( (char*) path)) {
