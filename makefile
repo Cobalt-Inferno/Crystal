@@ -64,3 +64,10 @@ fc:
 uninstall:
 	$(RM) ${DESTDIR}${PREFIX}/bin/$(TARGET)
 	@echo "Uninstallation complete."
+
+.PHONY: cf
+cf:
+	@$(RM) $(OBJDIR)
+	@cp -rf $(SRCDIR) $(OBJDIR)
+	@find $(OBJDIR) -type f -delete
+
