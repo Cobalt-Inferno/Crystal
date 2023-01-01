@@ -24,7 +24,7 @@ typedef struct {
 
 
 
-const temp_t *init_tempfile (size_t len);
+const temp_t init_tempfile (size_t len);
 void free_tempfile (temp_t *tmp);
 const char *tmp_to_var (const char *path);
 

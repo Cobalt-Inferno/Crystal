@@ -46,18 +46,18 @@ rm_tmp (char *path)
   return false;
 }
 
-const temp_t *
+const temp_t
 init_tempfile (size_t len)
 {
-  temp_t *temp = xmalloc(1024);
-  const char *path = NULL;
+  temp_t temp;
+  char *path = NULL;
   if ((path = _alloc_temp_str(len)) == NULL) {
     log_err("crystal.log", true, FF(), "Cannot allocate memory!");
-    return NULL;
+    return;
   }
   if (strlen(path) <= PATH_MAX) {
     if (touch( (char*) path)) {
-      strcpy((char*)path, temp->path);
+      strcpy(temp.path, path);
     }
   }
   return temp;

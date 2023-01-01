@@ -10,7 +10,7 @@ write_data (void *ptr, size_t size, size_t nmemb, FILE *stream)
 static const temp_t *
 download_to_tmpfile (const char *url)
 {
-  const temp_t *temp = init_tempfile(24);
+  temp_t temp = init_tempfile(24);
   CURL *curl = curl_easy_init();
   if (!curl) {
     log_err("crystal.log", true, FF(), "Could not initialize curl!");
@@ -18,7 +18,7 @@ download_to_tmpfile (const char *url)
   }
   curl_easy_setopt(curl, CURLOPT_URL, url);
   curl_easy_setopt(curl, CURLOPT_WRITEFUNCTION, write_data);
-  curl_easy_setopt(curl, CURLOPT_WRITEDATA, fopen(temp->path, "wb")); // We are not closing it, because we have a cleanup function in tempfile to do it for us.
+  curl_easy_setopt(curl, CURLOPT_WRITEDATA, fopen("test", "wb")); // We are not closing it, because we have a cleanup function in tempfile to do it for us.
 
   // Now we try to download the file.
   CURLcode res = curl_easy_perform(curl);
@@ -27,7 +27,7 @@ download_to_tmpfile (const char *url)
     log_err("crystal.log", true, FF(), "Failed to download the file.");
     return NULL;
   }
-  return temp;
+ // return temp;
 }
 
 static const char *
