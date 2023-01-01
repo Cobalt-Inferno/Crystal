@@ -7,14 +7,13 @@ write_data (void *ptr, size_t size, size_t nmemb, FILE *stream)
   size_t written = fwrite(ptr, size, nmemb, stream);
   return written;
 }
-static const temp_t *
+static const temp_t
 download_to_tmpfile (const char *url)
 {
   temp_t temp = init_tempfile(24);
   CURL *curl = curl_easy_init();
   if (!curl) {
     log_err("crystal.log", true, FF(), "Could not initialize curl!");
-    return NULL;
   }
   curl_easy_setopt(curl, CURLOPT_URL, url);
   curl_easy_setopt(curl, CURLOPT_WRITEFUNCTION, write_data);
@@ -25,7 +24,6 @@ download_to_tmpfile (const char *url)
   if (res != CURLE_OK) {
     curl_easy_cleanup(curl);
     log_err("crystal.log", true, FF(), "Failed to download the file.");
-    return NULL;
   }
  // return temp;
 }
@@ -39,10 +37,9 @@ read_file_to_var (const char *path)
 const char *
 retrive_html (const char *url)
 {
-  const temp_t *tmp = download_to_tmpfile(url);
-  const char *result = read_file_to_var(tmp->path);
-  free_tempfile((temp_t*)tmp);
-  if (result) {
+  const temp_t tmp = download_to_tmpfile(url);
+  const char *result = read_file_to_var(tmp.path);
+  if (result != NULL) {
     return result;
   }
   log_debug("crystal.log", true, FF(), "Failed to retrieve html.");
